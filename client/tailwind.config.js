@@ -10,7 +10,10 @@ export default {
         primary: "#4fbf8b",
         "primary-dull": "#44ae7c",
       },
+       fontFamily: {
+        outfit: ['Outfit', 'sans-serif'], // ← add your font here
     },
   },
+},
   plugins: [],
 };
