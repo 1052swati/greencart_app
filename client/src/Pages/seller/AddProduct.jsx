@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { assets, categories } from "../../assets/assets";
-import { useAppContext } from "../../Context/AppContext";
+import { useAppContext } from "../../Context/AppContext.jsx";
 import toast from "react-hot-toast";
 
 const AddProduct = () => {

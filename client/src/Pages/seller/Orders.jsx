@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { assets, dummyOrders } from '../../assets/assets'
-import { useAppContext } from '../../Context/AppContext'
+import { useAppContext } from '../../Context/AppContext.jsx'
 
 
 const Orders = () => {

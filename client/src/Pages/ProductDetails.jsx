@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "../Context/AppContext.jsx";
 import { useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";

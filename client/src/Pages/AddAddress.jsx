@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { assets } from '../assets/assets';
-import { useAppContext } from '../Context/AppContext';
+import { useAppContext } from '../Context/AppContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 

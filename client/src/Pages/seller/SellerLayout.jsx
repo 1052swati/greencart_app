@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { assets } from "../../assets/assets";
-import { useAppContext } from "../../Context/AppContext";
+import { useAppContext } from "../../Context/AppContext.jsx";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import toast from "react-hot-toast";
