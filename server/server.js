@@ -27,7 +27,7 @@ app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin: "https://greencart-app-frontend-inky.vercel.app", credentials: true}));
-app.use((req, res, next)=>{res.header("Access-control-Allow-Credentials", "true" )
+app.use((req, res, next)=>{res.header("Access-Control-Allow-Credentials", "true" )
     next();
 });
 app.get('/', (req, res)=> res.send("API is working"));

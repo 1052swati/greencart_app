@@ -67,11 +67,17 @@ export const isSellerAuth = async(req, res)=>{
 
 export const sellerLogout = async(req, res)=>{
     try{
-        res.clearCookie('sellerToken',{
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        });
+        // res.clearCookie('sellerToken',{
+        //     httpOnly: true,
+        //     secure: process.env.NODE_ENV === 'production',
+        //     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        // });
+        res.clearCookie("sellerToken", {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+  path: "/",   // 🔥 IMPORTANT
+});
         return res.json({success: true, message: "Logged Out"})
 
     }catch(error) {
