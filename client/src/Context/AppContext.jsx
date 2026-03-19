@@ -5,7 +5,7 @@ import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
 axios.defaults.baseURL = "https://greencart-app-backend-seven.vercel.app";
 
 export const AppContext = createContext();
