@@ -23,6 +23,7 @@ const allowedOrigins = ['http://localhost:5173']
 //app.post('/stripe', express.raw({type: 'application/json'}), stripeWebhooks)
 app.post('/api/order/webhook', express.raw({type: 'application/json'}), stripeWebhooks)
 //Middleware configuration
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin: "https://greencart-app-frontend-inky.vercel.app", credentials: true}));
