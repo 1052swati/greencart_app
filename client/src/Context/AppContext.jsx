@@ -74,12 +74,24 @@ export const AppContextProvider = ({ children }) => {
   };
 
   // Add to cart
+  // const addToCart = (itemId) => {
+  //   const cartData = structuredClone(cartItems);
+  //   cartData[itemId] = (cartData[itemId] || 0) + 1;
+  //   setCartItems(cartData);
+  //   toast.success("Added to cart");
+  // };
   const addToCart = (itemId) => {
-    const cartData = structuredClone(cartItems);
-    cartData[itemId] = (cartData[itemId] || 0) + 1;
-    setCartItems(cartData);
-    toast.success("Added to cart");
-  };
+
+  if (!user) {
+    toast.error("Please login first");
+    return;
+  }
+
+  const cartData = structuredClone(cartItems);
+  cartData[itemId] = (cartData[itemId] || 0) + 1;
+  setCartItems(cartData);
+  toast.success("Added to cart");
+};
 
   // Update cart item
   const updateCartItem = (itemId, quantity) => {
@@ -140,21 +152,39 @@ export const AppContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 //Update Database Cart Items
-  useEffect(()=>{
-      const updateCart = async ()=>{
-        try {
-          const { data } = await axios.post('/api/cart/update', {cartItems}) 
-          if (!data.success){
-            toast.error(data.message)
-          }
-        } catch (error) {
-           toast.error(error.message)
-        }
+  // useEffect(()=>{
+  //     const updateCart = async ()=>{
+  //       try {
+  //         const { data } = await axios.post('/api/cart/update', {cartItems}) 
+  //         if (!data.success){
+  //           toast.error(data.message)
+  //         }
+  //       } catch (error) {
+  //          toast.error(error.message)
+  //       }
+  //     }
+  //     if(user){
+  //       updateCart()
+  //     }
+  // },[cartItems])
+
+  useEffect(() => {
+  const updateCart = async () => {
+    try {
+      const { data } = await axios.post('/api/cart/update', { cartItems });
+      if (!data.success) {
+        toast.error(data.message);
       }
-      if(user){
-        updateCart()
-      }
-  },[cartItems])
+    } catch (error) {
+      console.log(error.response?.data?.message);
+    }
+  };
+
+  if (user && Object.keys(cartItems).length > 0) {
+    updateCart();
+  }
+
+}, [cartItems, user]);
 
   const value = {
     navigate,
