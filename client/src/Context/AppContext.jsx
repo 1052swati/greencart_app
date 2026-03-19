@@ -82,7 +82,7 @@ export const AppContextProvider = ({ children }) => {
   // };
   const addToCart = (itemId) => {
 
-  if (!user) {
+  if (!user || !user._id) {
     toast.error("Please login first");
     return;
   }
