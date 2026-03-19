@@ -25,7 +25,7 @@ app.post('/api/order/webhook', express.raw({type: 'application/json'}), stripeWe
 //Middleware configuration
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin: allowedOrigins, credentials: true}));
+app.use(cors({origin: "https://greencart-app-frontend-inky.vercel.app", credentials: true}));
 
 app.get('/', (req, res)=> res.send("API is working"));
 app.use('/api/user', userRouter)
