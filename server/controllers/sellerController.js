@@ -50,18 +50,42 @@ return res.status(200).json({
    }
 }
 
-//seller isAuth : /api/user/is-auth
-export const isSellerAuth = async(req, res)=>{
-    try{
+// //seller isAuth : /api/user/is-auth
+// export const isSellerAuth = async(req, res)=>{
+//     try{
 
-        return res.json({success: true})
+//         return res.json({success: true})
 
-    }catch{
-         console.log(error.message)
-        res.json({success: false, message: error.message});
+//     }catch{
+//          console.log(error.message)
+//         res.json({success: false, message: error.message});
 
+//     }
+// }
+import jwt from "jsonwebtoken";
+
+export const isSellerAuth = async (req, res) => {
+  try {
+    const token = req.cookies.sellerToken;
+
+    if (!token) {
+      return res.status(401).json({
+        success: false,
+        message: "Not Authorized",
+      });
     }
-}
+
+    jwt.verify(token, process.env.JWT_SECRET);
+
+    return res.json({ success: true });
+
+  } catch (error) {
+    return res.status(401).json({
+      success: false,
+      message: "Invalid Token",
+    });
+  }
+};
 
 //Logout seller : /api/seller/logout
 
