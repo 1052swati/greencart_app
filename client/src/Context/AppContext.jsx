@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = "https://greencart-app-backend-seven.vercel.app";
 
 export const AppContext = createContext();
 
