@@ -11,20 +11,30 @@ export const sellerLogin = async (req, res)=>{
 
        
 
-        res.cookie("sellerToken", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-         path: "/",
-  domain: ".vercel.app",
-      });
+//         res.cookie("sellerToken", token, {
+//         httpOnly: true,
+//         secure: true,
+//         sameSite: "none",
+//         maxAge: 7 * 24 * 60 * 60 * 1000,
+//          path: "/"
+//       });
       
 
-    return res.json({
+//     return res.json({
+//   success: true,
+//   message: "Logged In",
+//   token
+// });
+res.cookie("sellerToken", token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+  path: "/",
+});
+
+return res.status(200).json({
   success: true,
-  message: "Logged In",
-  token
+  message: "Logged In"
 });
     }
 
