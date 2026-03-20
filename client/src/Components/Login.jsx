@@ -18,10 +18,11 @@ const onSubmitHandler = async (event)=>{
         const {data} = await axios.post(`/api/user/${state}`, {
             name, email,password
         });
+        console.log(data);
 
           if(data.success){
             localStorage.setItem("token", data.token);
-            console.log(data)
+            
              navigate('/')
              setUser(data.user) 
              setShowUserLogin(false)
