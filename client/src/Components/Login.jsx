@@ -20,6 +20,8 @@ const onSubmitHandler = async (event)=>{
         });
 
           if(data.success){
+            localStorage.setItem("token", data.token);
+            console.log(data)
              navigate('/')
              setUser(data.user) 
              setShowUserLogin(false)
