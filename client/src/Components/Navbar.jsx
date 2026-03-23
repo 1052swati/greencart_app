@@ -86,7 +86,7 @@ const Navbar = () => {
 
             
 
-            { open && (
+            {/* { open && (
             <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
                 <NavLink to="/" onClick={()=> setOpen(false)}>Home</NavLink>
                 <NavLink to="/products" onClick={()=> setOpen(false)}>All Product</NavLink>
@@ -112,6 +112,43 @@ const Navbar = () => {
                 </button>
                )}
             </div>
+)} */}
+{ open && (
+  <div className="absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex flex-col items-start gap-2 px-5 text-sm md:hidden">
+
+    <NavLink to="/" onClick={()=> setOpen(false)}>Home</NavLink>
+    <NavLink to="/products" onClick={()=> setOpen(false)}>All Product</NavLink>
+
+    {user && Object.keys(user).length > 0 && (
+      <NavLink to="/products" onClick={()=> setOpen(false)}>My Orders</NavLink>
+    )}
+
+    <NavLink to="/" onClick={()=> setOpen(false)}>Contact</NavLink>
+
+    {/* ✅ MOBILE LOGIN BUTTON FIX */}
+    {(!user || Object.keys(user).length === 0) ? (
+      <button 
+        onClick={()=>{
+          setOpen(false);
+          setShowUserLogin(true);
+        }}
+        className="cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary-dull transition text-white rounded-full text-sm w-full text-left"
+      >
+        Login
+      </button>
+    ) : (
+      <button 
+        onClick={()=>{
+          setOpen(false);
+          logout();
+        }} 
+        className="cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary-dull transition text-white rounded-full text-sm w-full text-left"
+      >
+        Logout
+      </button>
+    )}
+
+  </div>
 )}
 
         </nav>
