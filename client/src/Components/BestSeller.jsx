@@ -1,3 +1,25 @@
+// import React from 'react'
+// import ProductCart from './ProductCart'
+// import { useAppContext } from '../Context/AppContext.jsx';
+
+// const BestSeller = () => {
+//   const { products } = useAppContext();
+
+//   return (
+//     <div className='mt-16'>
+//       <p className='text-2xl md:text-3xl font-medium'>Best Sellers</p>
+
+//       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md-gap-6 lg:grid-cols-5 mt-6'>
+//         {products.slice(0, 5).map((item) => (
+//           <ProductCart key={item._id} product={item} />
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default BestSeller;
+
 import React from 'react'
 import ProductCart from './ProductCart'
 import { useAppContext } from '../Context/AppContext.jsx';
@@ -6,14 +28,20 @@ const BestSeller = () => {
   const { products } = useAppContext();
 
   return (
-    <div className='mt-16'>
-      <p className='text-2xl md:text-3xl font-medium'>Best Sellers</p>
+    <div className='mt-16 px-3 md:px-6'>
+      
+      <p className='text-2xl md:text-3xl font-medium mb-6'>
+        Best Sellers
+      </p>
 
-      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md-gap-6 lg:grid-cols-5 mt-6'>
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6'>
+        
         {products.slice(0, 5).map((item) => (
           <ProductCart key={item._id} product={item} />
         ))}
+
       </div>
+
     </div>
   )
 }
